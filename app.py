@@ -7,10 +7,10 @@ from flask_jwt_extended import JWTManager, jwt_required, create_access_token
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
-# Put db file in the same folder as app
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, "planets.db")
-app.config['JWT_SECRET_KEY'] = 'super_secret' # change this IRL
+app.config['JWT_SECRET_KEY'] = 'super_secret'
 app.config['MAIL_SERVER']='sandbox.smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 2525
 app.config['MAIL_USERNAME'] = '8c8f37456b2893'
@@ -19,8 +19,8 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
 
-db = SQLAlchemy(app)  # Initialize db
-ma = Marshmallow(app)  # Initialize ma
+db = SQLAlchemy(app)  
+ma = Marshmallow(app) 
 jwt = JWTManager(app)
 mail = Mail(app)
 
@@ -75,7 +75,7 @@ def db_seed():
 
 
 @app.route('/')
-def hello_world():  # put application's code here
+def hello_world():
     return 'Hello World!'
 
 
